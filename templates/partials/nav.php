@@ -1,6 +1,7 @@
 
 <div id="main-nav">
 
+   <a href="students.php">Students</a> |
    <a href="modules.php">My Modules</a> |
    <a href="assignmodule.php">Assign Module</a> |
    <a href="details.php">My Details</a> |
