@@ -1,6 +1,8 @@
 <?php
 
 include "passwordLib.php";
+include "dbconnect.inc";
+include "config.inc";
 
 /**
  * Validate Login function
@@ -56,5 +58,13 @@ function template( $file, $args=array() ){
    include $file;
    return ob_get_clean();
 }
+
+//function generateEntries($conn){
+////    $faker = Faker\Factory::create();
+//
+//    $sql = "INSERT INTO student (studentid, password,  firstname, lastname, house, town, county, country, postcode)
+//            VALUES (1,1,1,1,1,1,1,1,1);";
+//    mysqli_query($conn, $sql);
+//}
 
 ?>
