@@ -45,6 +45,8 @@ if (isset($_SESSION['id'])) {
                 $sql = "INSERT INTO student ( image, studentid, password, firstname, lastname, house, town, county, country, postcode) 
                     VALUES ('$imgContent','$id', '$password','$name', '$surname', '$house', '$town', '$county', '$country', '$postcode')";
                 $result = mysqli_query($conn, $sql);
+
+
             }
 
 
