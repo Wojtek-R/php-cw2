@@ -15,23 +15,38 @@ if (isset($_SESSION['id'])) {
     if (isset($_POST['addStudent'])) {
 
 
-        if (!empty($_POST['txtfirstname']) && !empty($_POST['txtlastname']) && !empty($_POST['txthouse']) && !empty($_POST['txttown']) &&
+        if (!empty($_FILES['image']['name']) && !empty($_POST['txtstudentid']) && !empty($_POST['txtpassword']) && !empty($_POST['txtfirstname']) &&
+            !empty($_POST['txtlastname']) && !empty($_POST['txthouse']) && !empty($_POST['txttown']) &&
             !empty($_POST['txtcounty']) && !empty($_POST['txtcountry']) && !empty($_POST['txtpostcode']) ) {
 
-            // build an sql statment to add the student with details
-            $id = $_POST['txtstudentid'];
-            $password = $_POST['txtpassword'];
-            $name = $_POST['txtfirstname'];
-            $surname = $_POST['txtlastname'];
-            $house = $_POST['txthouse'];
-            $town = $_POST['txttown'];
-            $county = $_POST['txtcounty'];
-            $country = $_POST['txtcountry'];
-            $postcode = $_POST['txtpostcode'];
+            $fileName = basename($_FILES["image"]["name"]);
+            $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
 
-            $sql = "INSERT INTO student ( studentid, password, firstname, lastname, house, town, county, country, postcode) 
-                    VALUES ('$id', '$password','$name', '$surname', '$house', '$town', '$county', '$country', '$postcode')";
-            $result = mysqli_query($conn, $sql);
+            //Allow certain file formats
+            $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+
+            if (in_array($fileType,$allowTypes)) {
+                $image = $_FILES['image']['tmp_name'];
+                $imgContent = addslashes(file_get_contents($image));
+
+
+                //create variables to store user inputs
+                $id = $_POST['txtstudentid'];
+                $password = $_POST['txtpassword'];
+                $name = $_POST['txtfirstname'];
+                $surname = $_POST['txtlastname'];
+                $house = $_POST['txthouse'];
+                $town = $_POST['txttown'];
+                $county = $_POST['txtcounty'];
+                $country = $_POST['txtcountry'];
+                $postcode = $_POST['txtpostcode'];
+
+                // build an sql statment to add the student with details
+                $sql = "INSERT INTO student ( image, studentid, password, firstname, lastname, house, town, county, country, postcode) 
+                    VALUES ('$imgContent','$id', '$password','$name', '$surname', '$house', '$town', '$county', '$country', '$postcode')";
+                $result = mysqli_query($conn, $sql);
+            }
+
 
             if ($result) {
                 $data['content'] = "<p>Student have been added.</p>";
@@ -50,7 +65,9 @@ if (isset($_SESSION['id'])) {
         $data['content'] = <<<EOD
 
    <h2>Add Student</h2>
-   <form name="studentdetails" action="" method="post">
+   <form name="studentdetails" action="" method="post" enctype='multipart/form-data'>
+   Student Picture : 
+   <input name="image" type="file" /><br/>
    Student id : 
    <input name="txtstudentid" type="text" value="" /><br/>
    Password : 
