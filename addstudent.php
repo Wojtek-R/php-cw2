@@ -42,19 +42,20 @@ if (isset($_SESSION['id'])) {
                 $postcode = $_POST['txtpostcode'];
 
                 // build an sql statment to add the student with details
-                $sql = "INSERT INTO student ( image, studentid, password, firstname, lastname, house, town, county, country, postcode) 
-                    VALUES ('$imgContent','$id', '$password','$name', '$surname', '$house', '$town', '$county', '$country', '$postcode')";
-                $result = mysqli_query($conn, $sql);
+                $stmt = $conn->prepare("INSERT INTO student ( image, studentid, password, firstname, lastname, house, town, county, country, postcode) 
+                    VALUES (?,?, ?,?, ?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("bissssssss", $imgContent, $id, $password, $name, $surname, $house, $town, $county, $country, $postcode);
+                $stmt->send_long_data(0, file_get_contents($_FILES['image']['tmp_name']));
 
+                if ($stmt->execute()) {
+                    $data['content'] = "<p>Student have been added.</p>";
+                    $stmt->close();
 
-            }
+                } else {
+                    $data['content'] = "<p>Form not submitted.</p>";
+                }
 
-
-            if ($result) {
-                $data['content'] = "<p>Student have been added.</p>";
-
-            } else {
-                $data['content'] = "<p>Form not submitted.</p>";
+//                $result = mysqli_query($conn, $sql);
             }
         } else {
             $data['content'] = "<p>All fields required.</p>";
