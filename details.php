@@ -15,15 +15,23 @@ if (isset($_SESSION['id'])) {
    if (isset($_POST['submit'])) {
 
       // build an sql statment to update the student details
-      $sql = "update student set firstname ='" . $_POST['txtfirstname'] . "',";
-      $sql .= "lastname ='" . $_POST['txtlastname']  . "',";
-      $sql .= "house ='" . $_POST['txthouse']  . "',";
-      $sql .= "town ='" . $_POST['txttown']  . "',";
-      $sql .= "county ='" . $_POST['txtcounty']  . "',";
-      $sql .= "country ='" . $_POST['txtcountry']  . "',";
-      $sql .= "postcode ='" . $_POST['txtpostcode']  . "' ";
-      $sql .= "where studentid = '" . $_SESSION['id'] . "';";
-      $result = mysqli_query($conn,$sql);
+
+      $stmt = $conn->prepare(
+          "UPDATE student SET firstname = ?, lastname = ?, house = ?, town = ?, county = ?, country = ?, postcode = ? WHERE studentid = ?");
+      $stmt->bind_param("sssssssi", $_POST['txtfirstname'], $_POST['txtlastname'], $_POST['txthouse'],
+          $_POST['txttown'], $_POST['txtcounty'], $_POST['txtcountry'], $_POST['txtpostcode'],$_SESSION['id']);
+      $stmt->execute();
+      $stmt->close();
+
+//      $sql = "update student set firstname ='" . $_POST['txtfirstname'] . "',";
+//      $sql .= "lastname ='" . $_POST['txtlastname']  . "',";
+//      $sql .= "house ='" . $_POST['txthouse']  . "',";
+//      $sql .= "town ='" . $_POST['txttown']  . "',";
+//      $sql .= "county ='" . $_POST['txtcounty']  . "',";
+//      $sql .= "country ='" . $_POST['txtcountry']  . "',";
+//      $sql .= "postcode ='" . $_POST['txtpostcode']  . "' ";
+//      $sql .= "where studentid = '" . $_SESSION['id'] . "';";
+//      $result = mysqli_query($conn,$sql);
 
       $data['content'] = "<p>Your details have been updated</p>";
 
