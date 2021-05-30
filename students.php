@@ -27,7 +27,6 @@ if (isset($_SESSION['id'])) {
             $data['content'] .= "Please select a student to be deleted.";
         }
 
-
     } else {
 
         $sql = "SELECT * FROM student;";
@@ -47,7 +46,7 @@ if (isset($_SESSION['id'])) {
             $data['content'] .= "<td> $row[lastname] </td><td> $row[house] </td><td> $row[town] </td><td> $row[county] </td><td> $row[country] </td><td> $row[postcode] </td></tr>";
         }
         $data['content'] .= "</table>";
-        $data['content'] .= "<input type='submit' value='Delete' name='submit'/> </form>";
+        $data['content'] .= "<input onclick='return checkDelete()' type='submit' value='Delete' name='submit'/> </form>";
 
     }
 

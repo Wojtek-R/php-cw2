@@ -89,7 +89,7 @@ if (isset($_SESSION['id'])) {
    <input name="txtcountry" type="text"  value="" /><br/>
    Postcode :
    <input name="txtpostcode" type="text"  value="" /><br/>
-   <input type="submit" value="Add student" name="addStudent"/>
+   <input onclick='return checkDelete()' type="submit" value="Add student" name="addStudent"/>
    </form>
 
 EOD;
