@@ -14,8 +14,12 @@ if (isset($_SESSION['id'])) {
         if (isset($_POST["check"])) {
 
             foreach ($_POST["check"] as $student) {
-                $sql = "DELETE FROM student WHERE studentid ='" . $student . "'";
-                $result = mysqli_query($conn, $sql);
+
+                $stmt = $conn->prepare("DELETE FROM student WHERE studentid = ?");
+                $stmt->bind_param("i", $student);
+                $stmt->execute();
+                $stmt->close();
+
             }
             $data['content'] .= "Selected student/s deleted";
         }
@@ -38,12 +42,12 @@ if (isset($_SESSION['id'])) {
 
         // Display the students within the html table
         while ($row = mysqli_fetch_array($result)) {
-            $data['content'] .= "<tr><td><input type='checkbox' id='checkItem' name='check[]' value='$row[studentid]'>";
+            $data['content'] .= "<tr><td><input type='checkbox' id='checkItem' name='check[]' value='$row[studentid]'/></td>";
             $data['content'] .= "<td> <img src='data:image/jpeg;base64,".base64_encode( $row['image'] )."'/> </td><td> $row[studentid] </td><td> $row[dob] </td><td> $row[firstname] </td>";
             $data['content'] .= "<td> $row[lastname] </td><td> $row[house] </td><td> $row[town] </td><td> $row[county] </td><td> $row[country] </td><td> $row[postcode] </td></tr>";
         }
         $data['content'] .= "</table>";
-        $data['content'] .= "<input type='submit' value='Delete' name='submit' </form>";
+        $data['content'] .= "<input type='submit' value='Delete' name='submit'/> </form>";
 
     }
 
@@ -52,3 +56,5 @@ if (isset($_SESSION['id'])) {
 }
 ?>
 
+<!--$sql = "DELETE FROM student WHERE studentid ='" . $student . "'";-->
+<!--$result = mysqli_query($conn, $sql);-->
