@@ -49,10 +49,16 @@ if (isset($_SESSION['id'])) {
         $data['content'] .= "<input onclick='return checkDelete()' type='submit' value='Delete' name='submit'/> </form>";
 
     }
-
+    //popup jquery confirm validation
+    $data['content'] .= "<script language='JavaScript' type='text/javascript'>
+           function checkDelete(){
+               return confirm('Are you sure you want to delete selected student/s?');
+           }
+      </script>";
     // render the template
     echo template("templates/default.php", $data);
 }
+
 ?>
 
 <!--$sql = "DELETE FROM student WHERE studentid ='" . $student . "'";-->

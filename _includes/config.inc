@@ -1,6 +1,9 @@
 <?php
 
-session_start();
+if(!isset($_SESSION))
+{
+    session_start();
+}
 
 // controls the level of error reporting in PHP
 error_reporting(E_ALL);

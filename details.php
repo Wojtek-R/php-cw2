@@ -59,6 +59,12 @@ if (isset($_SESSION['id'])) {
 EOD;
 
    }
+    //popup jquery confirm validation
+    $data['content'] .= "<script language='JavaScript' type='text/javascript'>
+           function checkDelete(){
+               return confirm('Are you sure you want to change details of this student?');
+           }
+      </script>";
 
    // render the template
    echo template("templates/default.php", $data);

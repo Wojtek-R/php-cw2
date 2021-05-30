@@ -95,6 +95,12 @@ if (isset($_SESSION['id'])) {
 EOD;
 
     }
+    //popup jquery confirm validation
+    $data['content'] .= "<script language='JavaScript' type='text/javascript'>
+           function checkDelete(){
+               return confirm('Would you like to add this student/s?');
+           }
+      </script>";
 
     // render the template
     echo template("templates/default.php", $data);
