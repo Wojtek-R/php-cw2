@@ -73,8 +73,10 @@ if (isset($_SESSION['id'])) {
 
    <h2>Add Student</h2>
    <form name="studentdetails" action="" method="post" enctype='multipart/form-data'>
-   Student Picture : 
-   <input name="image" type="file" /><br/>
+   <div class="mb-3">
+   <label for="image" class="form-label">Student Picture : </label> 
+   <input id="image" name="image" type="file" /><br/>
+   </div>
    Student id : 
    <input name="txtstudentid" type="text" value="" /><br/>
    Password : 
