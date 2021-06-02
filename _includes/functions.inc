@@ -32,7 +32,6 @@ function validatelogin($id,$password) {
 	}
 }
 
-
 /**
  * Simple Templating function
  *

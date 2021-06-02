@@ -32,7 +32,8 @@ if (isset($_SESSION['id'])) {
 
                 //create variables to store user inputs
                 $id = $_POST['txtstudentid'];
-                $password = $_POST['txtpassword'];
+                //hashing the password to make it more secure
+                $password = password_hash($_POST['txtpassword'], PASSWORD_DEFAULT);
                 $dob = $_POST['txtdob'];
                 $name = $_POST['txtfirstname'];
                 $surname = $_POST['txtlastname'];
@@ -58,10 +59,12 @@ if (isset($_SESSION['id'])) {
 
 //                $result = mysqli_query($conn, $sql);
             }
+            else {
+                $data['content'] = "<p>Wrong picture file format. Please upload correct type: 'jpg', 'png', 'jpeg', 'gif'.</p>";
+            }
         } else {
-            $data['content'] = "<p>All fields required.</p>";
+            $data['content'] = "<p>Please fill all the fields.</p>";
         }
-
 
     }
     else {
