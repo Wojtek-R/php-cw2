@@ -34,7 +34,7 @@ if (isset($_SESSION['id'])) {
 
         // prepare page content
         $data['content'] .= "<form name='checklist' action='' method='post'>";
-        $data['content'] .= "<table border='1'>";
+        $data['content'] .= "<table border='1' class='table table-info'>";
         $data['content'] .= "<tr><th colspan='12' align='center'>Students</th></tr>";
         $data['content'] .= "<tr><th>Select</th><th>Image</th><th>Student ID</th><th>dob</th><th>firstname</th><th>lastname</th>";
         $data['content'] .= "<th>house</th><th>town</th><th>county</th><th>country</th><th>postcode</th></tr>";
@@ -60,6 +60,3 @@ if (isset($_SESSION['id'])) {
 }
 
 ?>
-
-<!--$sql = "DELETE FROM student WHERE studentid ='" . $student . "'";-->
-<!--$result = mysqli_query($conn, $sql);-->
