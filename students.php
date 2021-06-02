@@ -33,11 +33,11 @@ if (isset($_SESSION['id'])) {
         $result = mysqli_query($conn, $sql);
 
         // prepare page content
-        $data['content'] .= "<form name='checklist' action='' method='post'>";
-        $data['content'] .= "<table border='1' class='table table-info'>";
-        $data['content'] .= "<tr><th colspan='12' align='center'>Students</th></tr>";
-        $data['content'] .= "<tr><th>Select</th><th>Image</th><th>Student ID</th><th>dob</th><th>firstname</th><th>lastname</th>";
-        $data['content'] .= "<th>house</th><th>town</th><th>county</th><th>country</th><th>postcode</th></tr>";
+        $data['content'] .= "<div class='table-responsive '><form name='checklist' action='' method='post'>";
+        $data['content'] .= "<table border='1' class='table table-info table-bordered table-striped table-hover align-middle'>";
+        $data['content'] .= "<thead><tr><th colspan='12' align='center' class='table-dark'>Students</th></tr>";
+        $data['content'] .= "<tr><th >Select</th><th>Image</th><th>Student ID</th><th>dob</th><th>firstname</th><th>lastname</th>";
+        $data['content'] .= "<th>house</th><th>town</th><th>county</th><th>country</th><th>postcode</th></tr></thead><tbody>";
 
         // Display the students within the html table
         while ($row = mysqli_fetch_array($result)) {
@@ -45,8 +45,8 @@ if (isset($_SESSION['id'])) {
             $data['content'] .= "<td> <img src='data:image/jpeg;base64,".base64_encode( $row['image'] )."'/> </td><td> $row[studentid] </td><td> $row[dob] </td><td> $row[firstname] </td>";
             $data['content'] .= "<td> $row[lastname] </td><td> $row[house] </td><td> $row[town] </td><td> $row[county] </td><td> $row[country] </td><td> $row[postcode] </td></tr>";
         }
-        $data['content'] .= "</table>";
-        $data['content'] .= "<input onclick='return checkDelete()' type='submit' value='Delete' name='submit'/> </form>";
+        $data['content'] .= "</tbody></table>";
+        $data['content'] .= "<input class='btn btn-danger m-2 mt-0' onclick='return checkDelete()' type='submit' value='Delete' name='submit'/> </form></div>";
 
     }
     //popup jquery confirm validation

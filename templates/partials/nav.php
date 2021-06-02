@@ -1,5 +1,5 @@
 
-<div id="main-nav" class="nav-bar">
+<div id="main-nav" class="">
 
    <a href="students.php">Students</a> |
    <a href="addstudent.php">Add Student</a> |
