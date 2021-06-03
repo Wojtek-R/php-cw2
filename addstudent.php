@@ -71,35 +71,78 @@ if (isset($_SESSION['id'])) {
 
         $data['content'] = <<<EOD
 
-   <h2>Add Student</h2>
-   <form name="studentdetails" action="" method="post" enctype='multipart/form-data'>
-   <div class="mb-3">
-   <label for="image" class="form-label">Student Picture : </label> 
-   <input id="image" name="image" type="file" /><br/>
-   </div>
-   Student id : 
-   <input name="txtstudentid" type="text" value="" /><br/>
-   Password : 
-   <input name="txtpassword" type="text" value="" /><br/>
-   Date of Birth : 
-   <input name="txtdob" type="date" value="" /><br/>
-   First Name :
-   <input name="txtfirstname" type="text" value="" /><br/>
-   Surname :
-   <input name="txtlastname" type="text"  value="" /><br/>
-   Number and Street :
-   <input name="txthouse" type="text"  value="" /><br/>
-   Town :
-   <input name="txttown" type="text"  value="" /><br/>
-   County :
-   <input name="txtcounty" type="text"  value="" /><br/>
-   Country :
-   <input name="txtcountry" type="text"  value="" /><br/>
-   Postcode :
-   <input name="txtpostcode" type="text"  value="" /><br/>
-   <input onclick='return checkDelete()' type="submit" value="Add student" name="addStudent"/>
+   <form class="row g-3 m-3 ms-0 form border" name="studentdetails" action="" method="post" enctype='multipart/form-data'>
+        <fieldset style="margin: 0 0 .25rem 0; padding: 0;">
+            <legend>Add Student</legend>
+            <div class="row mb-3">
+                <label for="image" class="col-sm-2 col-form-label">Student Picture : </label> 
+                <div class="col-sm-5">
+                <input id="image" name="image" type="file" class="form-control" /><br/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="studentid" class="col-sm-2 col-form-label">Student id :</label>
+                <div class="col-sm-5"> 
+                <input id="studentid" name="txtstudentid" type="text" value="" class="form-control"/><br/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="password" class="col-sm-2 col-form-label">Password :</label>
+                <div class="col-sm-5">
+                <input id="password" name="txtpassword" type="text" value="" class="form-control"/><br/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="dob" class="col-sm-2 col-form-label">Date of Birth :</label>
+                <div class="col-sm-5">
+                <input id="dov" name="txtdob" type="date" value="" class="form-control"/><br/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="name" class="col-sm-2 col-form-label">First Name :</label>
+                <div class="col-sm-5">
+                <input id="name" name="txtfirstname" type="text" value="" class="form-control"/><br/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="surname" class="col-sm-2 col-form-label">Surname :</label>
+                <div class="col-sm-5">
+                <input id="surname" name="txtlastname" type="text"  value="" class="form-control"/><br/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="house" class="col-sm-2 col-form-label">Number and Street :</label>
+                <div class="col-sm-5">
+                <input id="house" name="txthouse" type="text"  value="" class="form-control"/><br/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="town" class="col-sm-2 col-form-label">Town :</label>
+                <div class="col-sm-5">
+                <input id="town" name="txttown" type="text"  value="" class="form-control"/><br/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="county" class="col-sm-2 col-form-label">County :</label>
+                <div class="col-sm-5">
+                <input id="county" name="txtcounty" type="text"  value="" class="form-control"/><br/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="country" class="col-sm-2 col-form-label">Country :</label>
+                <div class="col-sm-5">
+                <input id="country" name="txtcountry" type="text"  value="" class="form-control"/><br/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="code" class="col-sm-2 col-form-label">Postcode :</label>
+                <div class="col-sm-5">
+                <input id="code" name="txtpostcode" type="text"  value="" class="form-control"/><br/>
+                </div>
+            </div>
+            <input onclick='return checkDelete()' type="submit" value="Add student" name="addStudent" class="btn btn-primary m-2"/>
+        </fieldset>
    </form>
-
 EOD;
 
     }

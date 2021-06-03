@@ -20,4 +20,30 @@ td {
   text-align: center;
 }
 
+legend {
+  background-color: #212529;
+  color: white;
+  padding: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.form {
+  width: 75%;
+  background-color: #cff4fc;
+}
+
+.col-sm-5 {
+  height: 0rem;
+  width: 80%;
+}
+
+.table-dark {
+  font-size: 1.25rem;
+}
+
+.row {
+  margin-left: auto;
+}
+
 /*# sourceMappingURL=styles.css.map */

@@ -36,25 +36,56 @@ if (isset($_SESSION['id'])) {
       // see http://stackoverflow.com/questions/6924193/what-is-the-use-of-eod-in-php for info
       // also http://stackoverflow.com/questions/8280360/formatting-an-array-value-inside-a-heredoc
       $data['content'] = <<<EOD
-
-   <h2>My Details</h2>
-   <form name="frmdetails" action="" method="post">
-   First Name :
-   <input name="txtfirstname" type="text" value="{$row['firstname']}" /><br/>
-   Surname :
-   <input name="txtlastname" type="text"  value="{$row['lastname']}" /><br/>
-   Number and Street :
-   <input name="txthouse" type="text"  value="{$row['house']}" /><br/>
-   Town :
-   <input name="txttown" type="text"  value="{$row['town']}" /><br/>
-   County :
-   <input name="txtcounty" type="text"  value="{$row['county']}" /><br/>
-   Country :
-   <input name="txtcountry" type="text"  value="{$row['country']}" /><br/>
-   Postcode :
-   <input name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
-   <input onclick='return checkDelete()' type="submit" value="Save" name="submit"/>
+   
+   <form class="row g-3 m-3 ms-0 form border" name="frmdetails" action="" method="post">
+   <fieldset style="margin: 0 0 .25rem 0; padding: 0;">
+   <legend>My Details</legend>
+        <div class="row mb-3">
+            <label for="name" class="col-sm-2 col-form-label">First Name :</label>
+            <div class="col-sm-5">
+            <input id="name" name="txtfirstname" type="text" value="{$row['firstname']}" class="form-control"/><br/>
+            </div>
+        </div>
+   <div class="row mb-3">
+                <label for="surname" class="col-sm-2 col-form-label">Surname :</label>
+                <div class="col-sm-5">
+                <input id="surname" name="txtlastname" type="text"  value="{$row['lastname']}" class="form-control"/><br/>
+                </div>
+            </div>
+   <div class="row mb-3">
+                <label for="house" class="col-sm-2 col-form-label">Number and Street :</label>
+                <div class="col-sm-5">
+                <input id="house" name="txthouse" type="text"  value="{$row['house']}" class="form-control"/><br/>
+                </div>
+            </div>
+   <div class="row mb-3">
+                <label for="town" class="col-sm-2 col-form-label">Town :</label>
+                <div class="col-sm-5">
+                <input id="town" name="txttown" type="text"  value="{$row['town']}" class="form-control"/><br/>
+                </div>
+            </div>
+   <div class="row mb-3">
+                <label for="county" class="col-sm-2 col-form-label">County :</label>
+                <div class="col-sm-5">
+                <input id="county" name="txtcounty" type="text"  value="{$row['county']}" class="form-control"/><br/>
+                </div>
+            </div>
+   <div class="row mb-3">
+                <label for="country" class="col-sm-2 col-form-label">Country :</label>
+                <div class="col-sm-5">
+                <input id="country" name="txtcountry" type="text"  value="{$row['country']}" class="form-control"/><br/>
+                </div>
+            </div>
+   <div class="row mb-3">
+                <label for="code" class="col-sm-2 col-form-label">Postcode :</label>
+                <div class="col-sm-5">
+                <input id="code" name="txtpostcode" type="text"  value="{$row['postcode']}" class="form-control"/><br/>
+                </div>
+            </div>
+   <input onclick='return checkDelete()' type="submit" value="Save" name="submit" class="btn btn-warning m-2"/>
+   </fieldset>
    </form>
+   
 
 EOD;
 

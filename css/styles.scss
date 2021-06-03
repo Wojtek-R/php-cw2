@@ -21,4 +21,37 @@ img{
 td{
   text-align: center;
 }
+legend{
+  background-color: $heading;
+  color: white;
+  padding: .25rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
 
+//fieldset>* {
+//  padding: 0 1.25rem;
+//}
+
+//fieldset{
+//  !important
+//}
+
+.form{
+  width: 75%;
+  background-color: $bg-cnt-colour;
+}
+
+//overriding styles of bootstrap
+.col-sm-5{
+  height: 0rem;
+  width: 80%;
+}
+
+.table-dark{
+  font-size: 1.25rem;
+}
+
+.row{
+  margin-left: auto;
+}
