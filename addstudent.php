@@ -15,7 +15,8 @@ if (isset($_SESSION['id'])) {
     if (isset($_POST['addStudent'])) {
 
 
-        if (!empty($_FILES['image']['name']) && !empty($_POST['txtstudentid']) && !empty($_POST['txtpassword']) && !empty($_POST['txtdob']) && !empty($_POST['txtfirstname']) &&
+        if (!empty($_FILES['image']['name']) && !empty($_POST['txtstudentid']) && !empty($_POST['txtpassword'])
+             && !empty($_POST['txtdob']) && !empty($_POST['txtfirstname']) &&
             !empty($_POST['txtlastname']) && !empty($_POST['txthouse']) && !empty($_POST['txttown']) &&
             !empty($_POST['txtcounty']) && !empty($_POST['txtcountry']) && !empty($_POST['txtpostcode']) ) {
 
